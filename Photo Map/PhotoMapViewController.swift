@@ -33,7 +33,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
-                
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("Camera is available 📸")
             vc.sourceType = .camera
@@ -83,7 +83,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
     func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber) {
         let annotation = MKPointAnnotation()
-        let locationCoordinate = CLLocationCoordinate2D(latitude: 37.779560, longitude: -122.393027)
+        let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         annotation.coordinate = locationCoordinate
         annotation.title = String(describing: latitude)
         mapView.addAnnotation(annotation)
